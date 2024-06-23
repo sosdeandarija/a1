@@ -1,0 +1,260 @@
+* {
+    margin:0px;
+    padding:0;
+    font-family: "Roboto", sans-serif;
+}
+wrapper {
+    width:100%;
+}
+.error {
+    color: #dd2d1f;
+    font-size:12px;
+    margin-top:1%;
+}
+.display-none {
+    display: none;
+}
+.button {
+    margin:2% 0;
+    padding:2%;
+    width: 190px;
+    font-size: 15px;
+    border:0px;
+    border-radius: 3px;
+    background-color: #dd2d1f;
+    color:#ffff;
+   
+}
+input[type="checkbox"]:checked {
+    accent-color: #dd2d1f;
+    
+}
+
+/* header */
+header {
+    padding:.1%;
+    position: sticky;
+    top:0;
+    z-index: 1;
+    background-color: #ffff;
+}
+header img{
+    width: 7%;
+}
+
+/*main*/
+.main {
+    margin:0px auto;
+    padding-bottom:1%;
+    width:100%;
+    background-color: #e0e0e1;
+}
+
+/*banner*/
+.banner {
+    position: relative;
+    padding:3%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../pics/banner.jpg');
+    background-size:cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.caption {
+    position: absolute;
+    margin-bottom:2%;
+    color:#ffff;
+    bottom: 0;
+}
+
+/*form*/
+form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.inputValue, .inputData, .inputConfirm {
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 2px 2px 8px grey;
+    margin:1% auto;
+    padding:1%;
+    width: 80%;
+    text-align: center;
+}
+.amountBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*input value*/
+.value {
+    width: 120px;
+    height: 120px;
+    padding: 1%;
+    margin: .3rem;
+    font-size:22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffff;
+}
+.value input {
+    align-self: last baseline;
+}
+.value label {
+    align-self: flex-start;
+    font-weight: bold;
+}
+.value:hover {
+    transform: scale(1.03);
+    transition: .2s;
+}
+
+/* custom value */
+.customValue {
+    margin:0 auto;
+    padding:2%;
+}
+.customValue p {
+    font-size: 15px !important;
+}
+.customValue input[type=text] {
+    width: 100px;
+    height: 25px;
+    margin:1rem;
+    padding: .3rem;
+    font-size: 1rem;
+}
+.customValue p{
+    font-size:12px;
+}
+
+/* input data */
+.inputData input, .inputData textarea, #newUser input, #oldUser input {
+    width: 50%;
+    padding: 2%;
+    border:1px solid #e0e0e1;
+    margin:0 auto;
+}
+
+/* input confirm */
+.inputConfirm a{
+ color: #dd2d1f;
+}
+.inputConfirm {
+ background-image: url('../pics/background.jpg');
+ background-size:cover;
+}
+.inputConfirm button:hover, .button:hover {
+    transform: scale(1.03);
+    letter-spacing: .2px;
+    transition: .2s;
+}
+
+/* step2 */
+#step2 {
+    margin:0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e1;
+}
+.block {
+    margin:3% auto;
+    padding:1%;
+    width: 80%;
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 2px 2px 8px grey;
+}
+/* cart */
+#cart p{
+    margin:1%;
+}
+#data {
+    padding: 1%;
+}
+#data table {
+    margin:1% auto;
+    width:50%;
+    background-color: #ffff;
+}
+#data td{
+    padding:2%;
+    /* border-bottom: 1px solid black; */
+    font-weight: bold;
+}
+#data td:first-child {
+    text-align: left;
+}
+#data td:last-child {
+    text-align: right;
+}
+/* cards */
+.payment {
+    margin:1% auto;
+    padding:1%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cardImgs img {
+    width: 50px;
+}
+
+#chooseACard {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    padding:2%;
+    background-color: #ffff;
+    align-items: baseline;
+}
+.cardCb {
+    margin:0;
+    padding:0;
+}
+
+#newUser, #oldUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#newUser input, #oldUser input {
+    margin: 1%;
+}
+
+
+@media only screen and (max-width: 436px) {
+    .value  {
+        width:100%;
+        height:50%;
+    }
+    #step1, #step2 {
+        width: 100%;
+    }
+
+    .main{
+        width: 100%;
+    }
+
+    .inputData input[type="text"] {
+        width: 90%;
+    }
+}
+.display-none {
+    display: none !important;
+}
+
