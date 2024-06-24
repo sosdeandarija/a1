@@ -152,8 +152,7 @@ form {
  background-size:cover;
 }
 .inputConfirm button:hover, .button:hover {
-    transform: scale(1.03);
-    letter-spacing: .2px;
+    transform: scale(1.02);
     transition: .2s;
 }
 
@@ -168,33 +167,36 @@ form {
 .block {
     margin:3% auto;
     padding:1%;
-    width: 80%;
+    width: 90%;
     text-align: center;
     background-color: rgba(255,255,255,0.5);
     box-shadow: 2px 2px 8px grey;
 }
 /* cart */
 #cart p{
-    margin:1%;
+    margin:2%;
 }
-#data {
-    padding: 1%;
-}
-#data table {
+ #data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
     margin:1% auto;
-    width:50%;
+    width: 50%;
+    text-align: center;
     background-color: #ffff;
+    padding: 2%;
 }
-#data td{
-    padding:2%;
-    /* border-bottom: 1px solid black; */
+#data ul{
+    list-style-type: none;
+}
+#data ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.key {
     font-weight: bold;
-}
-#data td:first-child {
-    text-align: left;
-}
-#data td:last-child {
-    text-align: right;
 }
 /* cards */
 .payment {
@@ -251,6 +253,9 @@ form {
     }
 
     .inputData input[type="text"] {
+        width: 90%;
+    }
+    #data {
         width: 90%;
     }
 }

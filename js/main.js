@@ -210,13 +210,13 @@ window.onload = function () {
         let dataOutput = {'Vrednost dopune': `${data.amount} RSD`, 'Broj telefona':data.number, 'E-mail adresa':data.email}
 
 
-        let dataHtmlOutput = '<table>';
+        let dataHtmlOutput = '<ul>';
         for (let key in dataOutput) {
             if (dataOutput.hasOwnProperty(key)) {  
-                dataHtmlOutput += `<tr> <td>${key}:</td> <td>${dataOutput[key]}</td>`
+                dataHtmlOutput += `<li><span>${key}:</span> <span class='key'>${dataOutput[key]}</span></li>`
             }
         }
-        dataOutput += '</table>'
+        dataOutput += '</ul>'
 
         document.getElementById('data').innerHTML = dataHtmlOutput
     }
@@ -235,16 +235,22 @@ window.onload = function () {
     document.getElementById('continueToPaymentButton').addEventListener('click', () => {
         if(cardCb === 'newCard') {
             document.querySelector('#newUser').classList.remove('display-none')
-            document.querySelector('#newUser').scrollIntoView({ behavior: "smooth"});
             document.querySelector('#step2').classList.add('display-none')
 
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
         if(cardCb === 'oldCard') {
-            console.log('ovde')
-            document.getElementById('oldUser').classList.remove('display-none')
-            document.querySelector('#oldUser').scrollIntoView({ behavior: "smooth"});
             document.getElementById('step2').classList.add('display-none');
+            document.getElementById('oldUser').classList.remove('display-none')
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
         }
     })
 
@@ -257,18 +263,21 @@ window.onload = function () {
         })
     })
 
+    let name = document.getElementById('name')
+    let lastName = document.getElementById('lastName')
+    let cardNum = document.getElementById('cardNum')
+
+    let nameErr = document.querySelector('.errorName')
+    let lastNameErr = document.querySelector('.errorLastName')
+    let cardNumErr = document.querySelector('.errorCardNum')
+    
     function handleErrors () {
         let regName = /^[A-z]{1,30}$/
         let regCardNumber = /^[0-9]{16}$/
-
         let name = document.getElementById('name')
         let lastName = document.getElementById('lastName')
         let cardNum = document.getElementById('cardNum')
-
-        let nameErr = document.querySelector('.errorName')
-        let lastNameErr = document.querySelector('.errorLastName')
-        let cardNumErr = document.querySelector('.errorCardNum')
-
+    
         if(name.value !== '' && !regName.test(name.value)) {
             nameErr.innerHTML = 'Ime mora imati samo karaktere.'
             nameErr.classList.remove('display-none')
@@ -292,10 +301,41 @@ window.onload = function () {
     document.getElementById('newPaymentButton').addEventListener('click', returnToMainPage)
 
     document.getElementById("finishButton").addEventListener('click', () => {
+        let errors = []
+        if(name.value === '') {
+            nameErr.classList.remove('display-none')
+            nameErr.innerHTML = 'Morate uneti ime.'
+            name.focus()
+            errors.push("Ime")
+        }
+        else nameErr.classList.add('display-none')
+
+        if(lastName.value === '') {
+            lastNameErr.innerHTML = 'Morate uneti prezime.'
+            lastNameErr.classList.remove('display-none')
+            lastName.focus()
+            errors.push("Prezime")
+        }
+        else lastNameErr.classList.add('display-block')
+
+        if(cardNum.value === '') {
+            cardNumErr.classList.remove('display-none')
+            cardNumErr.innerHTML = 'Morate uneti broj kartice.'
+            cardNum.focus()
+            errors.push("Num")
+        }
+        else cardNumErr.classList.add('display-block')
+
+        if(errors.length !== 0) return
+
         document.querySelector('#last').classList.remove('display-none');
         document.querySelector("#finishNum").innerHTML = data.number;
         document.querySelector("#newUser").classList.add('display-none');
         document.getElementById('last').scrollIntoView({ behavior: "smooth"});
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
     })
 
     function returnToMainPage () {
@@ -304,6 +344,15 @@ window.onload = function () {
         document.querySelector('#newUser').classList.add('display-none')
         document.querySelector('#last').classList.add('display-none')
         document.getElementById('step1').scrollIntoView({ behavior: "smooth"});
+        
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
 
+        document.getElementById('number').value = ''
+        document.getElementById('confirmNumber').value = ''
+        document.getElementById('email').value = ''
+        document.getElementById('agree').checked = false
     }
 }
